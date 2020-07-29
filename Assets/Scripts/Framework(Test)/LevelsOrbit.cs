@@ -7,14 +7,21 @@ public class LevelsOrbit : MonoBehaviour
     public GameObject[] Levels;
     private NonRemovablesSatellite nonremovables;
     public void Start(){
-      InitiateLevels(0);
+
+      if(PlayerPrefs.HasKey("currLevel")){
+        InitiateLevels(PlayerPrefs.GetInt("currLevel"));
+      }else{
+        PlayerPrefs.SetInt("currLevel", 0);
+        InitiateLevels(PlayerPrefs.GetInt("currLevel"));
+      }
+
       nonremovables = FindObjectOfType<NonRemovablesSatellite>();
       nonremovables.Rearrange();
     }
 
     public void NextLevel(){
-      InitiateLevels(MainOrbit.currentLevel+1);
-      MainOrbit.currentLevel++;
+      InitiateLevels(PlayerPrefs.GetInt("currLevel")+1);
+      PlayerPrefs.SetInt("currLevel",PlayerPrefs.GetInt("currLevel")+1);
       nonremovables.Rearrange();
     }
 

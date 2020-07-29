@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainOrbit : MonoBehaviour
 {
-    [HideInInspector]public static int currentLevel;
     private LevelsOrbit levelorbit;
     void Start(){
       levelorbit = FindObjectOfType<LevelsOrbit>();
@@ -14,6 +13,7 @@ public class MainOrbit : MonoBehaviour
       if (Input.GetKeyDown("space"))
         {
             levelorbit.NextLevel();
+            PlayerPrefs.Save();
         }
     }
 }
