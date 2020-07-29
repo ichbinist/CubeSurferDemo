@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orbit : MonoBehaviour
+public class MainOrbit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [HideInInspector]public static int currentLevel;
+    private LevelsOrbit levelorbit;
+    void Start(){
+      levelorbit = FindObjectOfType<LevelsOrbit>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+      if (Input.GetKeyDown("space"))
+        {
+            levelorbit.NextLevel();
+        }
     }
 }
