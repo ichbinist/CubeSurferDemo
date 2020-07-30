@@ -36,4 +36,8 @@ public class LevelsOrbit : MonoBehaviour
       Instantiate(Levels[currentLevel],Vector3.zero,Quaternion.identity);
 
     }
+
+    public void RestartLevel(){
+        InitiateLevels(PlayerPrefs.GetInt("currLevel"));
+    }
 }

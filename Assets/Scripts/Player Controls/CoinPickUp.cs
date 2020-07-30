@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CoinPickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  private void OnTriggerEnter(Collider other)
+      {
+          //Check to see if the tag on the collider is equal to Enemy
+          if (other.tag == "Coin")
+          {
+              PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold")+20);
+              Destroy(other);
+          }
+      }
 }
