@@ -7,11 +7,9 @@ public class CoinLabel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TMPro.TextMeshProUGUI>().text = PlayerPrefs.GetInt("gold").ToString();
+        showGold();
     }
-
-    public void IncreaseCoins(){
-      PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold")+20);
+    public void showGold(){
       GetComponent<TMPro.TextMeshProUGUI>().text = PlayerPrefs.GetInt("gold").ToString();
     }
 }
